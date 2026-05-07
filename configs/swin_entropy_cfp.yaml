@@ -1,0 +1,69 @@
+data:
+  img_size: 224
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+
+dataloader:
+  num_workers: 4
+  pin_memory: True
+  persistent_workers: True
+
+train:
+  device: "cuda"
+  use_amp: True
+  data_root: ""
+  save_dir: "runs/train"
+  batch_size: 32
+  epochs: 200
+  label_smoothing: 0.1
+  grad_clip_norm: 1.0
+
+  early_stopping:
+    patience: 15
+    min_delta: 1.0e-4
+
+  optimizer:
+    type: "adamw"
+    lr: 5.0e-5
+    weight_decay: 0.05
+
+  scheduler:
+    type: "cosine"
+    warmup_epochs: 5
+    min_lr_factor: 0.01
+
+model:
+  name: "SwinEntropyClassifier"
+  pretrained: True
+  swin_entropy_classifier_params:
+    head:
+      num_classes: 4
+      hidden_dim: 512
+      dropout: 0.5
+
+predict:
+  device: "cuda"
+  use_amp: True
+  weight_path: ""
+  input_dir: ""
+  class_names: {
+    0: 'CFP-0', 1: 'CFP-1', 2: 'CFP-2', 3: 'CFP-3'
+  }
+
+  save_predictions_to_txt:
+    enabled: True
+    filename: "prediction_results.txt"
+
+  visualization:
+    output_base_dir: "runs/eval"
+    save_images: True
+    plot_normalized_cm: True
+    plot_roc_curve: True
+    plot_metrics_chart: True
+    plot_calibration_curve: True
+
+    grad_cam_options:
+      enabled: True
+      mode: 'first_n'
+      n_per_class: 5
+      grad_cam_alpha: 0.5
