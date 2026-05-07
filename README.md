@@ -14,7 +14,7 @@ SwinEntropy-Project/
 ├── tools/                     # Executable scripts for train/eval
 └── README.md
 
-📊 Data Preparation
+## 📊 Data Preparation
 Organize your dataset in the following directory structure. The dataloader will automatically infer class names from the subfolders.
 
 Plaintext
@@ -29,7 +29,7 @@ Dataset_Root/
     └── ...
 Update the data_root and input_dir paths in configs/swin_entropy_cfp.yaml accordingly.
 
-🚀 Quick Start
+## 🚀 Quick Start
 1. Training
 Configure your hyperparameters in configs/swin_entropy_cfp.yaml, then run:
 
