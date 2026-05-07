@@ -3,8 +3,6 @@
 A modular, publication-ready deep learning framework based on the Swin Transformer architecture, specifically designed for transparent and rigorous clinical image classification.
 
 ## 📁 Project Structure
-
-```text
 SwinEntropy-Project/
 ├── configs/                   # YAML configuration files
 ├── data/                      # Data loaders and augmentation pipelines
@@ -43,4 +41,3 @@ To run full metrics evaluation, generate high-DPI charts, and execute the Grad-C
 Bash
 python tools/predict.py
 All outputs, including .csv source data for charts, metrics reports, and CAM overlay images, will be stored in runs/eval/.
-```
